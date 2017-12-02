@@ -15,6 +15,7 @@
 		D26C9C051FC0AC4F00B51496 /* Tasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C9C031FC0ABCC00B51496 /* Tasker.swift */; };
 		D26C9C061FC0AC5300B51496 /* Tasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C9C031FC0ABCC00B51496 /* Tasker.swift */; };
 		D29C20041FCF605A00591514 /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C20031FCF605A00591514 /* TaskListController.swift */; };
+		D2AFF5EE1FD2146F0060B1D3 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFF5ED1FD2146F0060B1D3 /* TaskController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D26C9C011FC0ABC200B51496 /* TaskMakerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskMakerTests.swift; sourceTree = "<group>"; };
 		D26C9C031FC0ABCC00B51496 /* Tasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasker.swift; sourceTree = "<group>"; };
 		D29C20031FCF605A00591514 /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
+		D2AFF5ED1FD2146F0060B1D3 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				62DD57C21FA4DF2500CF9A16 /* Info.plist */,
 				D26C9C031FC0ABCC00B51496 /* Tasker.swift */,
 				D29C20031FCF605A00591514 /* TaskListController.swift */,
+				D2AFF5ED1FD2146F0060B1D3 /* TaskController.swift */,
 			);
 			path = "Productivity App";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				D26C9C061FC0AC5300B51496 /* Tasker.swift in Sources */,
 				62DD57B71FA4DF2500CF9A16 /* AppDelegate.swift in Sources */,
+				D2AFF5EE1FD2146F0060B1D3 /* TaskController.swift in Sources */,
 				D29C20041FCF605A00591514 /* TaskListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

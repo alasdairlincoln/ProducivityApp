@@ -1,18 +1,9 @@
-//
-//  AppDelegate.swift
-//  Productivity App
-//
-//  Created by Alasdair Lincoln on 28/10/2017.
-//  Copyright © 2017 Alasdair Lincoln. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let splitViewController = self.window!.rootViewController as! UISplitViewController
