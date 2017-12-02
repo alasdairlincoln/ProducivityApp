@@ -16,6 +16,9 @@ class TaskController: UIViewController {
             self.title = task.title
             self.titleField.text = task.title
             self.noteField.text = task.text
+            
+            //TODO: find out why this doesnt update
+            
         }
 
         // Do any additional setup after loading the view.
