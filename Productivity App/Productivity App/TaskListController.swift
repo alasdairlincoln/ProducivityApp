@@ -2,40 +2,26 @@ import UIKit
 
 class TaskListController: UITableViewController {
 
-    var tasks:[String] = []
     let tasker = Tasker.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        let savedItems = UserDefaults.standard
-        if let loadedItems:[Task] = savedItems.object(forKey: "tasks") as! [Task]? {
-            tasker.tasks = loadedItems
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
- 
+        load()
         }
-        */
-    }
 
-    /*
-    func saveList() {
-        let savedItems = UserDefaults.standard
-        savedItems.set(tasker.tasks, forKey: "tasks")
-        savedItems.synchronize()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        print("search: \(searchText)")
     }
-    */
+ 
     @IBAction func add(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "New Task", message: "Type task below", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
             if let textFields = alert.textFields {
                 if let item = textFields[0].text {
-                    self.tasker.add(task: Task(title: item))
+                    self.tasker.add(task: item)
                     DispatchQueue.main.async {
-                        //self.saveList()
+                        self.save()
                         self.tableView.reloadData()
                     }
                 }
@@ -57,40 +43,6 @@ class TaskListController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        /*
-         //TO-DO: Fix bug that causes a crash when final item is deleted
-         
-         var youHaveData: Bool
-         
-         if self.tasks.isEmpty {
-         youHaveData = false
-         } else {
-         youHaveData = true
-         }
-         
-         var numOfSections: Int = 0
-         if youHaveData
-         {
-         tableView.separatorStyle = .singleLine
-         numOfSections            = 1
-         tableView.backgroundView = nil
-         }
-         else
-         {
-         let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-         noDataLabel.text          = "No tasks, please add a task"
-         noDataLabel.textColor     = UIColor.black
-         noDataLabel.textAlignment = .center
-         tableView.backgroundView  = noDataLabel
-         tableView.separatorStyle  = .none
-         
-         //TO-DO: remove edit button when displaying no task screen
-         
-         //self.navigationItem.leftBarButtonItem = self.deleteBarButton
-         }
-         return numOfSections
-         */
         return 1
     }
 
@@ -103,7 +55,7 @@ class TaskListController: UITableViewController {
         
         if let lable = cell.textLabel {
             let task1 = tasker.tasks[indexPath.row]
-            lable.text = task1.title
+            lable.text = task1
         }
         return cell
     }
@@ -112,16 +64,16 @@ class TaskListController: UITableViewController {
         if editingStyle == .delete {
             tasker.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //self.saveList()
+            save()
         }
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let task:Task = tasker.tasks[fromIndexPath.row]
+        let task:String = tasker.tasks[fromIndexPath.row]
         tasker.remove(at: fromIndexPath.row)
         tasker.insert(task: task, at: to.row)
         self.tableView.reloadData()
-        //self.saveList()
+        save()
     }
    
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -129,17 +81,38 @@ class TaskListController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "showNote" {
-            print("segue with \(segue.identifier) identifier triggerd")
+        if segue.identifier == "showTask" {
+            print("segue with \(String(describing: segue.identifier)) identifier triggerd")
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 print("found row \(indexPath.row)")
                 if let navigationController = segue.destination as? UINavigationController {
-                    if let noteController = navigationController.topViewController as? TaskController {
+                    if let TaskController = navigationController.topViewController as? TaskController {
                         print("found Note Controller")
-                        noteController.taskID = indexPath.row
+                        TaskController.taskID = indexPath.row
+                        TaskController.masterView = self
                     }
                 }
             }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        save()
+    }
+    
+    func save() {
+        let savedItems = UserDefaults.standard
+        savedItems.set(tasker.tasks, forKey: "tasks")
+        savedItems.synchronize()
+    }
+    
+    func load() {
+        let savedItems = UserDefaults.standard
+        if let loadedItems:[String] = savedItems.object(forKey: "tasks") as! [String]? {
+            tasker.tasks = loadedItems
+            tableView.reloadData()
         }
     }
  

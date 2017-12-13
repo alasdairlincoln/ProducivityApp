@@ -1,5 +1,6 @@
 import Foundation
 
+/*
 struct Task {
     
     var title: String
@@ -13,18 +14,35 @@ struct Task {
     }
     
 }
+*/
+
+/*
+public class saver {
+    
+    var save:[Array<Any>]
+    var title:[String]
+    
+    
+    public init(){
+        
+    }
+    
+}
+ */
 
 /**
  Class to control list of tasks
 */
 public class Tasker {
 
-    var tasks:[Task]
+    var tasks:[String]
+    var taskDetail:[String]
     
     public static let sharedInstance = Tasker()
     
     private init() {
         self.tasks = []
+        self.taskDetail = []
     }
     
     /**
@@ -37,7 +55,7 @@ public class Tasker {
      - Returns: Nothing
      - Throws: Nothing
     */
-    func add(task: Task) {
+    func add(task: String) {
         self.tasks.append(task)
     }
     
@@ -51,7 +69,7 @@ public class Tasker {
      - Returns: The task at the specified index
      - Throws: Nothing
     */
-    func getTask(atIndex index: Int) -> Task {
+    func getTask(atIndex index: Int) -> String {
         return tasks[index]
     }
     
@@ -96,7 +114,7 @@ public class Tasker {
      - Returns: Nothing
      - Throws: Nothing
     */
-    func insert(task: Task, at index: Int) {
+    func insert(task: String, at index: Int) {
         self.tasks.insert(task, at: index)
     }
     
@@ -111,7 +129,7 @@ public class Tasker {
      - Returns: Nothing
      - Throws: Nothing
      */
-    func update(task: Task, at index: Int) {
+    func update(task: String, at index: Int) {
         self.remove(at: index)
         self.insert(task: task, at: index)
     }
@@ -129,5 +147,7 @@ public class Tasker {
     public func remove(at index: Int) {
         self.tasks.remove(at: index)
     }
+
+   
 }
 
