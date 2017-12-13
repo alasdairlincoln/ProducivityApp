@@ -1,35 +1,5 @@
 import Foundation
 
-/*
-struct Task {
-    
-    var title: String
-    var description: String?
-    var time: TimeInterval?
-    var date: Date?
-    var text: String?
-    
-    init(title: String) {
-        self.title = title
-    }
-    
-}
-*/
-
-/*
-public class saver {
-    
-    var save:[Array<Any>]
-    var title:[String]
-    
-    
-    public init(){
-        
-    }
-    
-}
- */
-
 /**
  Class to control list of tasks
 */
@@ -37,6 +7,7 @@ public class Tasker {
 
     var tasks:[String]
     var taskDetail:[String]
+    public var taskID:Int?
     
     public static let sharedInstance = Tasker()
     
@@ -56,7 +27,8 @@ public class Tasker {
      - Throws: Nothing
     */
     func add(task: String) {
-        self.tasks.append(task)
+        tasks.append(task)
+        taskDetail.append("poop")
     }
     
     /**
@@ -85,7 +57,7 @@ public class Tasker {
     */
     public var count: Int {
         get {
-            return self.tasks.count
+            return tasks.count
         }
     }
     
@@ -100,7 +72,8 @@ public class Tasker {
      - Throws: Nothing
     */
     public func clearList() {
-        self.tasks.removeAll()
+        tasks.removeAll()
+        taskDetail.removeAll()
     }
     
     /**
@@ -115,7 +88,9 @@ public class Tasker {
      - Throws: Nothing
     */
     func insert(task: String, at index: Int) {
-        self.tasks.insert(task, at: index)
+        tasks.insert(task, at: index)
+        taskDetail.insert(" ", at: index)
+        
     }
     
     /**
@@ -130,8 +105,8 @@ public class Tasker {
      - Throws: Nothing
      */
     func update(task: String, at index: Int) {
-        self.remove(at: index)
-        self.insert(task: task, at: index)
+        remove(at: index)
+        insert(task: task, at: index)
     }
     
     /**
@@ -145,9 +120,17 @@ public class Tasker {
      - Throws: Nothing
      */
     public func remove(at index: Int) {
-        self.tasks.remove(at: index)
+        tasks.remove(at: index)
+        taskDetail.remove(at: index)
     }
-
+    
+    func setDetail(text: String, at: Int){
+        taskDetail.insert(text, at: at)
+    }
    
+    func getDetail(at: Int) -> String {
+        print(at, "count is: ",taskDetail.count)
+        return taskDetail[at]
+    }
 }
 

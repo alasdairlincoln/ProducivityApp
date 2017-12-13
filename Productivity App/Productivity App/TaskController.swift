@@ -4,6 +4,7 @@ class TaskController: UIViewController {
 
     public var taskID:Int?
     var masterView:UIViewController!
+    var text:String = ""
     
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var noteField: UITextView!
@@ -14,12 +15,10 @@ class TaskController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let id:Int = self.taskID{
-            print("View did load with note \(id)")
             let task:String = tasker.getTask(atIndex: id)
-            self.title = task
-            self.titleField.text = task
-            //let taskDetail:String
-            //self.noteField.text =
+            title = task
+            titleField.text = task
+            noteField.text = text
         }
     }
     
@@ -28,4 +27,10 @@ class TaskController: UIViewController {
         tasker.update(task: titleField.text!, at: taskID!)
     }
 
+    public func setNoteField(t: String) {
+        text = t
+        if isViewLoaded {
+            noteField.text = t
+        }
+    }
 }

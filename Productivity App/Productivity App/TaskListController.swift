@@ -82,14 +82,15 @@ class TaskListController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showTask" {
-            print("segue with \(String(describing: segue.identifier)) identifier triggerd")
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                print("found row \(indexPath.row)")
                 if let navigationController = segue.destination as? UINavigationController {
                     if let TaskController = navigationController.topViewController as? TaskController {
-                        print("found Note Controller")
+                        tasker.taskID = indexPath.row
                         TaskController.taskID = indexPath.row
                         TaskController.masterView = self
+                        print("indexpath: ",indexPath.row)
+                        let detial = tasker.getDetail(at: indexPath.row)
+                        TaskController.setNoteField(t: detial)
                     }
                 }
             }
@@ -105,6 +106,7 @@ class TaskListController: UITableViewController {
     func save() {
         let savedItems = UserDefaults.standard
         savedItems.set(tasker.tasks, forKey: "tasks")
+        savedItems.set(tasker.taskDetail, forKey: "details")
         savedItems.synchronize()
     }
     
@@ -114,6 +116,10 @@ class TaskListController: UITableViewController {
             tasker.tasks = loadedItems
             tableView.reloadData()
         }
+        if let loadedItems:[String] = savedItems.object(forKey: "details") as! [String]? {
+            tasker.taskDetail = loadedItems
+        }
+        
     }
  
 }
