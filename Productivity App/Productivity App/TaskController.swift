@@ -25,6 +25,7 @@ class TaskController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tasker.update(task: titleField.text!, at: taskID!)
+        tasker.updateDetail(detail: noteField.text!, at: taskID!)
     }
 
     public func setNoteField(t: String) {

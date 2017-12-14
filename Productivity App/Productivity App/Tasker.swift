@@ -28,7 +28,7 @@ public class Tasker {
     */
     func add(task: String) {
         tasks.append(task)
-        taskDetail.append("poop")
+        taskDetail.append("")
     }
     
     /**
@@ -89,8 +89,10 @@ public class Tasker {
     */
     func insert(task: String, at index: Int) {
         tasks.insert(task, at: index)
-        taskDetail.insert(" ", at: index)
-        
+    }
+    
+    func insertDetail(detail: String, at index: Int){
+        taskDetail.insert(detail, at: index)
     }
     
     /**
@@ -109,6 +111,11 @@ public class Tasker {
         insert(task: task, at: index)
     }
     
+    func updateDetail(detail: String, at index: Int) {
+        removeDetails(at: index)
+        insertDetail(detail: detail, at: index)
+    }
+    
     /**
      Removes a task from the array at given index
      ```
@@ -121,6 +128,9 @@ public class Tasker {
      */
     public func remove(at index: Int) {
         tasks.remove(at: index)
+    }
+    
+    public func removeDetails(at index: Int) {
         taskDetail.remove(at: index)
     }
     
@@ -129,7 +139,6 @@ public class Tasker {
     }
    
     func getDetail(at: Int) -> String {
-        print(at, "count is: ",taskDetail.count)
         return taskDetail[at]
     }
 }

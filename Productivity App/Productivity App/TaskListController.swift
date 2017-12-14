@@ -63,6 +63,7 @@ class TaskListController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tasker.remove(at: indexPath.row)
+            tasker.removeDetails(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             save()
         }
@@ -70,8 +71,11 @@ class TaskListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let task:String = tasker.tasks[fromIndexPath.row]
+        let detail:String = tasker.taskDetail[fromIndexPath.row]
         tasker.remove(at: fromIndexPath.row)
+        tasker.removeDetails(at: fromIndexPath.row)
         tasker.insert(task: task, at: to.row)
+        tasker.insertDetail(detail: detail, at: to.row)
         self.tableView.reloadData()
         save()
     }
@@ -88,9 +92,8 @@ class TaskListController: UITableViewController {
                         tasker.taskID = indexPath.row
                         TaskController.taskID = indexPath.row
                         TaskController.masterView = self
-                        print("indexpath: ",indexPath.row)
-                        let detial = tasker.getDetail(at: indexPath.row)
-                        TaskController.setNoteField(t: detial)
+                        let detail = tasker.getDetail(at: indexPath.row)
+                        TaskController.setNoteField(t: detail)
                     }
                 }
             }
