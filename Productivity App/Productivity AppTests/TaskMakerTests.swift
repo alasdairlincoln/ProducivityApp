@@ -15,10 +15,24 @@ class TaskMakerTests: XCTestCase {
         XCTAssertEqual(newTask, "Homework")
     }
     
+    func testUpdateDetail() {
+        tasker.add(task: "Homework")
+        tasker.updateDetail(detail: "Hello", at: 0)
+        let taskDetail : String = tasker.getDetail(at: 0)
+        XCTAssertEqual(taskDetail, "Hello")
+        
+    }
+    
     func testGetTask() {
         tasker.add(task: "Homework")
         let newTask = tasker.getTask(atIndex: 0)
         XCTAssertEqual(newTask, "Homework")
+    }
+    
+    func testGetDetail() {
+        tasker.add(task: "Homework")
+        let detail = tasker.getDetail(at: 0)
+        XCTAssertEqual(detail, "")
     }
     
     func testCountTasks() {

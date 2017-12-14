@@ -46,6 +46,20 @@ public class Tasker {
     }
     
     /**
+     Retrieves the task detail at a given index
+     ```
+     let tasker = Tasker()
+     let task = tasker.getDetail(atIndex: 2)
+     ```
+     - Paramater index: The index of the item to be retrieved
+     - Returns: The detail at the specified index
+     - Throws: Nothing
+     */
+    func getDetail(at: Int) -> String {
+        return taskDetail[at]
+    }
+    
+    /**
      Retrieves the number of tasks in tasks array
      ```
      let tasker = Tasker()
@@ -91,6 +105,18 @@ public class Tasker {
         tasks.insert(task, at: index)
     }
     
+    
+    /**
+     Inserts a task into array at given index
+     ```
+     let tasker = Tasker()
+     tasker.insertDetail(detail: detailString, at: 2)
+     ```
+     - Paramaters task: Detail of the task to be inserted,
+     at: Index of where task detail is to be inserted
+     - Returns: Nothing
+     - Throws: Nothing
+     */
     func insertDetail(detail: String, at index: Int){
         taskDetail.insert(detail, at: index)
     }
@@ -111,6 +137,17 @@ public class Tasker {
         insert(task: task, at: index)
     }
     
+    /**
+     Updates the task at the given index with the given task
+     ```
+     let tasker = Tasker()
+     tasker.updateDetail(detail: detailString, at: 2)
+     ```
+     - Paramaters task: Detail of the task to be updated with,
+     at: Index of where task detail is to be updated
+     - Returns: Nothing
+     - Throws: Nothing
+     */
     func updateDetail(detail: String, at index: Int) {
         removeDetails(at: index)
         insertDetail(detail: detail, at: index)
@@ -130,16 +167,19 @@ public class Tasker {
         tasks.remove(at: index)
     }
     
+    /**
+     Removes a task from the array at given index
+     ```
+     let tasker = Tasker()
+     tasker.removeDetails(at: 2)
+     ```
+     - Paramaters at: Index of where task details is to be removed
+     - Returns: Nothing
+     - Throws: Nothing
+     */
     public func removeDetails(at index: Int) {
         taskDetail.remove(at: index)
     }
     
-    func setDetail(text: String, at: Int){
-        taskDetail.insert(text, at: at)
-    }
-   
-    func getDetail(at: Int) -> String {
-        return taskDetail[at]
-    }
 }
 
