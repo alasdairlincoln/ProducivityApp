@@ -1,0 +1,12 @@
+
+/* Class = "UINavigationItem"; title = "Tasks"; ObjectID = "4Cu-Tc-xI8"; */
+"4Cu-Tc-xI8.title" = "Tasks";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "bdP-At-RlV"; */
+"bdP-At-RlV.title" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "nbF-hb-FAg"; */
+"nbF-hb-FAg.normalTitle" = "Start";
+
+/* Class = "UITextField"; placeholder = "Note title"; ObjectID = "yDX-0t-0Ro"; */
+"yDX-0t-0Ro.placeholder" = "Note title";

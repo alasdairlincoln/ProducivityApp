@@ -45,6 +45,7 @@
 		62DD57C71FA4DF2500CF9A16 /* Productivity AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DD57CD1FA4DF2500CF9A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62DD57D21FA4DF2500CF9A16 /* Productivity AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20D91C81FE3E7520072376C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D26C9C001FC0ABC100B51496 /* Productivity AppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Productivity AppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D26C9C011FC0ABC200B51496 /* TaskMakerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskMakerTests.swift; sourceTree = "<group>"; };
 		D26C9C031FC0ABCC00B51496 /* Tasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasker.swift; sourceTree = "<group>"; };
@@ -299,6 +300,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				62DD57BB1FA4DF2500CF9A16 /* Base */,
+				D20D91C81FE3E7520072376C /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
